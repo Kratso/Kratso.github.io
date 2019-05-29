@@ -3,22 +3,256 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <script>
-        $(document).ready(() => {
+        var turn = {
+            aInternal: true,
+            aListener: (val) => {},
+            set a(val) {
+                this.aInternal = val;
+                this.aListener(val);
+            },
+            get a() {
+                return this.aInternal;
+            },
+            registerListener: (listener) => {
+                this.aListener = listener;
+            }
+        }
 
+        $(document).ready(() => {
+            turn.registerListener(() => {
+                if (!turn.a) {
+                    if (typeof(win()) == "undefined") {
+                        if (typeof(nearvictory))
+                    } else {
+                        $(win()).addClass('ia')
+                    }
+                    if (endGame()) {
+                        $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
+                    } else {
+                        ('#message').html("Next Turn!")
+                    }
+                }
+            });
+            $('.top').children().each(function() {
+                var som = $(this)
+                $(this).click(() => {
+                    if (turn.a) {
+                        if (!som.hasClass('selected')) {
+                            som.addClass('selected')
+                            som.addClass('player')
+                            turn = false;
+                            if (endGame()) {
+                                $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
+                            } else {
+                                ('#message').html("Next Turn!")
+                            }
+                        }
+                    }
+                })
+            })
+            $('.centre').children().each(function() {
+                var som = $(this)
+                $(this).click(() => {
+                    if (turn) {
+                        if (!som.hasClass('selected')) {
+                            som.addClass('selected')
+                            som.addClass('player')
+                            turn = false;
+                            if (endGame()) {
+                                $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
+                            } else {
+                                ('#message').html("Next Turn!")
+                            }
+                        }
+                    }
+                })
+            })
+            $('.bottom').children().each(function() {
+                var som = $(this)
+                $(this).click(() => {
+                    if (turn) {
+                        if (!som.hasClass('selected')) {
+                            som.addClass('selected')
+                            som.addClass('player')
+                            turn = false;
+                            if (endGame()) {
+                                $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
+                            } else {
+                                ('#message').html("Next Turn!")
+                            }
+                        }
+                    }
+                })
+            })
         })
     </script>
     <style>
+        body {
+            background: linear-gradient(90deg, #00d0f0, #50a0f0);
+            font-family: "Raleway", sans-serif;
+        }
+        
+        h1 {
+            padding: 5vh;
+            margin-left: 10vw;
+            font-size: 40px;
+        }
+        
+        h3 {
+            padding: 5vh;
+            margin-left: 10vw;
+            font-size: 25px;
+        }
+        
+        h5 {
+            padding: 5vh;
+            margin-left: 10vw;
+            font-size: 16px;
+        }
+        
+        div {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            color: #ede;
+        }
+        
+        a:hover {
+            color: #cbc;
+        }
+        
+        a:visited {
+            color: #ede;
+        }
+        
+        .board {
+            height: 10vw;
+            background: #20a0f0;
+        }
+        
+        .top,
+        .centre,
+        .bottom {
+            margin-left: 15vw;
+        }
+        
+        .top {
+            padding-top: 1vw;
+            border-bottom: 4px solid black;
+        }
+        
+        .centre {
+            border-top: 4px solid black;
+            border-bottom: 4px solid black;
+        }
+        
+        .bottom {
+            padding-bottom: 1vw;
+            border-top: 4px solid black;
+        }
+        
+        .player {
+            background-image: url('https://www.dreamincode.net/forums/uploads/monthly_10_2010/post-0-12884151170642.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+        
+        #tl {
+            border-right: 4px solid black;
+        }
+        
+        #tc {
+            border-right: 4px solid black;
+            border-left: 4px solid black;
+        }
+        
+        #tr {
+            border-left: 4px solid black;
+        }
+        
+        #cr {
+            border-left: 4px solid black;
+        }
+        
+        #cc {
+            border-right: 4px solid black;
+            border-left: 4px solid black;
+        }
+        
+        #cl {
+            border-right: 4px solid black;
+        }
+        
+        #bl {
+            border-right: 4px solid black;
+        }
+        
+        #bc {
+            border-right: 4px solid black;
+            border-left: 4px solid black;
+        }
+        
+        #br {
+            border-left: 4px solid black;
+        }
+        
         #container {
-            margin: auto;
+            width: 100vw;
+            max-width: 200vw;
+        }
+        
+        #header {
+            background: #1070e0;
+            margin-bottom: 5vh;
+            border-bottom: 1px solid black;
+            width: 100vw!important;
+            max-width: 1000000vw;
+            color: white;
+            font-weight: bold;
+        }
+        
+        #footer {
+            background: #1070e0;
+            margin-top: 5vh;
+            border-top: 1px solid black;
+            width: 100vw!important;
+            max-width: 1000000vw;
+            color: white;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <div id="container">
-        <div id="tl"></div>
-        <div id="t"></div>
+    <div id="container" class="col-12 row">
+        <div class="col-12" id="header">
+            <h1 class="col-12">Welcome to TicTacToe JS/HTML!</h1>
+            <h3 class=col-12>This is a simple TicTacToe game made with JQuery and HTML. Have Fun!</h3>
+            <h5 id="message">Start at any moment by selecting your first tile!</h5>
+        </div>
+        <div class="top col-5 row">
+            <div id="tl" class="col-4 board"></div>
+            <div id="tc" class="col-4 board"></div>
+            <div id="tr" class="col-4 board"></div>
+        </div>
+        <div class="centre col-5 row">
+            <div id="cl" class="col-4 board"></div>
+            <div id="cc" class="col-4 board"></div>
+            <div id="cr" class="col-4 board"></div>
+        </div>
+        <div class="bottom col-5 row">
+            <div id="bl" class="col-4 board"></div>
+            <div id="bc" class="col-4 board"></div>
+            <div id="br" class="col-4 board"></div>
+        </div>
+        <div class="col-12" id="footer">
+            <h5><a href="https://Kratso.github.io" target="_blank">Some of my other projects....</a></h5>
+        </div>
     </div>
 </body>
 
