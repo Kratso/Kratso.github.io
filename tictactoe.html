@@ -20,14 +20,31 @@
             }
         }
 
+        lines = [
+            ['#tl', '#tc', '#tr'],
+            ['#cl', '#cc', '#cr'],
+            ['#bl', '#bc', '#br'],
+            ['#bl', '#cl', '#tl'],
+            ['#bl', '#cc', '#tr'],
+            ['#bc', '#cc', '#tc'],
+            ['#br', '#cr', '#tr'],
+            ['#tr', '#cc', '#bl']
+        ]
+
         $(document).ready(() => {
             turn.registerListener(() => {
                 if (!turn.a) {
                     if (typeof(win()) == "undefined") {
-                        if (typeof(nearvictory)) {
-
+                        if (typeof(nearvictory()) == "undefined") {
+                            $()
                         } else {
-
+                            $('.board').each(() => {
+                                if (!$(this).hasClass('selected')) {
+                                    $(this).addClass('selected')
+                                    $(this).addClass('ia')
+                                    return
+                                }
+                            })
                         }
                     } else {
                         $(win()).addClass('ia')
@@ -35,7 +52,8 @@
                     if (endGame()) {
                         $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
                     } else {
-                        ('#message').html("Next Turn!")
+                        $('#message').html("Next Turn!")
+                        turn.a = true
                     }
                 }
             });
@@ -50,7 +68,7 @@
                             if (endGame()) {
                                 $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
                             } else {
-                                ('#message').html("Next Turn!")
+                                $('#message').html("Next Turn!")
                             }
                         }
                     }
@@ -91,6 +109,39 @@
                 })
             })
         })
+
+        function endGame() {
+            return lines.map((val) => val.reduce((acc, val) => $(val).hasClass('ia') ? acc + 1 : acc), 0).reduce((acc, val) => acc > val ? acc : val) == 3 ||
+                lines.map((val) => val.reduce((acc, val) => $(val).hasClass('player') ? acc + 1 : acc), 0).reduce((acc, val) => acc > val ? acc : val) == 3
+        }
+
+        function win() {
+            return (lines
+                    .map((val) => val.reduce((acc, val) => $(val).hasClass('ia') ?
+                        acc + 1 :
+                        acc), 0)
+                    .reduce((acc, val) => acc > val ?
+                        acc :
+                        val) == 2) ?
+                "" :
+                undefined
+        }
+
+        function victory() {
+            return lines.map((val) => val.reduce((acc, val) => $(val).hasClass('player') ? acc + 1 : acc), 0).reduce((acc, val) => acc > val ? acc : val) == 3
+        }
+
+        function nearvictory() {
+            return (lines
+                    .map((val) => val.reduce((acc, val) => $(val).hasClass('player') ?
+                        acc + 1 :
+                        acc), 0)
+                    .reduce((acc, val) => acc > val ?
+                        acc :
+                        val) == 2) ?
+                "" :
+                undefined
+        }
     </script>
     <style>
         body {
