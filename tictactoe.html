@@ -168,11 +168,13 @@
         })
 
         function checkEnd() {
-            if (endGame()) {
+            end = endGame()
+            if (end) {
                 $('#message').html("Game Ended!" + (victory() ? " You Win!" : " You Lose..."))
             } else {
                 $('#message').html("Next Turn!")
             }
+            return end
         }
 
         function endGame() {
@@ -208,7 +210,6 @@
                 player.push(array.map((ele) => $(ele).hasClass('player') ? 1 : 0).reduce((acc, element) => acc + element))
             })
             turn = false
-            console.log(player)
             return player.reduce((acc, val) => acc > val ? acc : val) == 3
         }
 
@@ -296,7 +297,7 @@
         .centre,
         .bottom {
             margin-left: 15vw;
-		padding:0;
+            padding: 0;
         }
         
         .top {
