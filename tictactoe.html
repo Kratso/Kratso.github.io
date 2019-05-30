@@ -184,8 +184,6 @@
             lines.forEach((ele) => {
                 ia.push(ele.map((x) => $(x).hasClass('ia') ? 1 : 0).reduce((acc, val) => acc + val))
             })
-            console.log(player)
-            console.log(ia)
             return ia.reduce((acc, val) => acc > val ? acc : val) == 3 ||
                 player.reduce((acc, val) => acc > val ? acc : val) == 3 ||
                 tiles.filter((ele) => !$(ele).hasClass('selected')).length == 0
@@ -207,10 +205,11 @@
             player = []
             acc = 0
             lines.forEach((array) => {
-                player.push(array.map((ele) => $(ele).hasClass('player') ? 1 : 0))
+                player.push(array.map((ele) => $(ele).hasClass('player') ? 1 : 0).reduce((acc, element) => acc + element))
             })
             turn = false
-            return player.reduce((acc, val) => acc > val ? acc : val)
+            console.log(player)
+            return player.reduce((acc, val) => acc > val ? acc : val) == 3
         }
 
         function lose() {}
