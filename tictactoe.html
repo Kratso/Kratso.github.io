@@ -5,20 +5,21 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <script>
-        var turn = {
-            aInternal: true,
-            aListener: (val) => {},
-            set a(val) {
-                this.aInternal = val;
-                this.aListener(val);
-            },
-            get a() {
-                return this.aInternal;
-            },
-            registerListener: (listener) => {
-                this.aListener = listener;
-            }
-        }
+        var turn = true
+            /*{
+                       aInternal: true,
+                       aListener: (val) => {},
+                       set a(val) {
+                           this.aInternal = val;
+                           this.aListener(val);
+                       },
+                       get a() {
+                           return this.aInternal;
+                       },
+                       registerListener: (listener) => {
+                           this.aListener = listener;
+                       }
+                   }*/
 
         lines = [
             ['#tl', '#tc', '#tr'],
@@ -28,47 +29,95 @@
             ['#bl', '#cc', '#tr'],
             ['#bc', '#cc', '#tc'],
             ['#br', '#cr', '#tr'],
-            ['#tr', '#cc', '#bl']
+            ['#tl', '#cc', '#br']
+        ]
+
+        tiles = [
+            '#tl', '#tc', '#tr',
+            '#cl', '#cc', '#cr',
+            '#bl', '#bc', '#br'
         ]
 
         $(document).ready(() => {
-            turn.registerListener(() => {
-                if (!turn.a) {
-                    if (typeof(win()) == "undefined") {
-                        if (typeof(nearvictory()) == "undefined") {
-                            $()
-                        } else {
-                            $('.board').each(() => {
-                                if (!$(this).hasClass('selected')) {
-                                    $(this).addClass('selected')
-                                    $(this).addClass('ia')
-                                    return
-                                }
-                            })
-                        }
-                    } else {
-                        $(win()).addClass('ia')
-                    }
-                    if (endGame()) {
-                        $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
-                    } else {
-                        $('#message').html("Next Turn!")
-                        turn.a = true
-                    }
+
+            $('#reset').click(() => {
+                tiles.forEach((ele) => {
+                    $(ele).removeClass('selected')
+                    $(ele).removeClass('player')
+                    $(ele).removeClass('ia')
+                    $('#message').html("Game Reset!")
+                    turn = true
+                })
+            })
+
+            /*turn.registerListener((val) => {
+                console.log(val)
+                if (!val) {
+                     if (typeof(win()) == "undefined") {
+                          if (typeof(nearvictory()) == "undefined") {
+                              $()
+                          } else {
+                              $('.board').each(() => {
+                                  if (!$(this).hasClass('selected')) {
+                                      $(this).addClass('selected')
+                                      $(this).addClass('ia')
+                                      return
+                                  }
+                              })
+                          }
+                      } else {
+                          $(win()).addClass('ia')
+                      }
+                      if (endGame()) {
+                          $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
+                      } else {
+                          $('#message').html("Next Turn!")
+                          turn.a = true
+					  }
+                    console.log("falsazo")
+                    $(shuffle(tiles.filter((val) => !$(val).hasClass('selected')))[0]).addClass('selected').addClass('ia')
+                    turn.a = true
+                    checkEnd()
                 }
-            });
+			})*/
+            /*s tiles.forEach((ele) => {
+                 $(ele).click((el) => {
+                     console.log(el)
+                     if (turn) {
+                         if (!$(el).hasClass('selected')) {
+
+                             $(el).addClass('selected')
+                             $(el).addClass('player')
+
+                             turn = false;
+
+                             checkEnd()
+
+                             $(shuffle(tiles.filter((val) => !$(val).hasClass('selected')))[0]).addClass('selected').addClass('ia')
+
+                             turn = true
+
+                             checkEnd()
+                         }
+                     }
+                 })
+			 })*/
             $('.top').children().each(function() {
                 var som = $(this)
                 $(this).click(() => {
-                    if (turn.a) {
+                    if (turn) {
                         if (!som.hasClass('selected')) {
                             som.addClass('selected')
                             som.addClass('player')
-                            turn = false;
-                            if (endGame()) {
-                                $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
+                            turn = false
+                            if (!checkEnd()) {
+                                enemy = $(shuffle(tiles.filter((val) => !$(val).hasClass('selected')))[0])
+                                enemy.addClass('selected')
+                                enemy.addClass('ia')
+                                turn = true
+                                checkEnd()
                             } else {
-                                $('#message').html("Next Turn!")
+                                turn = false
                             }
                         }
                     }
@@ -81,11 +130,15 @@
                         if (!som.hasClass('selected')) {
                             som.addClass('selected')
                             som.addClass('player')
-                            turn = false;
-                            if (endGame()) {
-                                $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
+                            turn = false
+                            if (!checkEnd()) {
+                                enemy = $(shuffle(tiles.filter((val) => !$(val).hasClass('selected')))[0])
+                                enemy.addClass('selected')
+                                enemy.addClass('ia')
+                                turn = true
+                                checkEnd()
                             } else {
-                                ('#message').html("Next Turn!")
+                                turn = false
                             }
                         }
                     }
@@ -98,11 +151,15 @@
                         if (!som.hasClass('selected')) {
                             som.addClass('selected')
                             som.addClass('player')
-                            turn = false;
-                            if (endGame()) {
-                                $('#message').html("Game Ended!" + victory() ? " You Win!" : "You Lose...")
+                            turn = false
+                            if (!checkEnd()) {
+                                enemy = $(shuffle(tiles.filter((val) => !$(val).hasClass('selected')))[0])
+                                enemy.addClass('selected')
+                                enemy.addClass('ia')
+                                turn = true
+                                checkEnd()
                             } else {
-                                ('#message').html("Next Turn!")
+                                turn = false
                             }
                         }
                     }
@@ -110,9 +167,28 @@
             })
         })
 
+        function checkEnd() {
+            if (endGame()) {
+                $('#message').html("Game Ended!" + (victory() ? " You Win!" : " You Lose..."))
+            } else {
+                $('#message').html("Next Turn!")
+            }
+        }
+
         function endGame() {
-            return lines.map((val) => val.reduce((acc, val) => $(val).hasClass('ia') ? acc + 1 : acc), 0).reduce((acc, val) => acc > val ? acc : val) == 3 ||
-                lines.map((val) => val.reduce((acc, val) => $(val).hasClass('player') ? acc + 1 : acc), 0).reduce((acc, val) => acc > val ? acc : val) == 3
+            player = []
+            lines.forEach((ele) => {
+                player.push(ele.map((x) => $(x).hasClass('player') ? 1 : 0).reduce((acc, val) => acc + val))
+            })
+            ia = []
+            lines.forEach((ele) => {
+                ia.push(ele.map((x) => $(x).hasClass('ia') ? 1 : 0).reduce((acc, val) => acc + val))
+            })
+            console.log(player)
+            console.log(ia)
+            return ia.reduce((acc, val) => acc > val ? acc : val) == 3 ||
+                player.reduce((acc, val) => acc > val ? acc : val) == 3 ||
+                tiles.filter((ele) => !$(ele).hasClass('selected')).length == 0
         }
 
         function win() {
@@ -128,8 +204,16 @@
         }
 
         function victory() {
-            return lines.map((val) => val.reduce((acc, val) => $(val).hasClass('player') ? acc + 1 : acc), 0).reduce((acc, val) => acc > val ? acc : val) == 3
+            player = []
+            acc = 0
+            lines.forEach((array) => {
+                player.push(array.map((ele) => $(ele).hasClass('player') ? 1 : 0))
+            })
+            turn = false
+            return player.reduce((acc, val) => acc > val ? acc : val)
         }
+
+        function lose() {}
 
         function nearvictory() {
             return (lines
@@ -141,6 +225,26 @@
                         val) == 2) ?
                 "" :
                 undefined
+        }
+
+        function shuffle(array) {
+            var currentIndex = array.length,
+                temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
         }
     </script>
     <style>
@@ -215,6 +319,41 @@
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
+        }
+        
+        .ia {
+            background-image: url('https://www.dreamincode.net/forums/uploads/post-97990-1260678617.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+        
+        .butn {
+            background: #3498db;
+            background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+            background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+            background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+            background-image: -o-linear-gradient(top, #3498db, #2980b9);
+            background-image: linear-gradient(to bottom, #3498db, #2980b9);
+            -webkit-border-radius: 28;
+            -moz-border-radius: 28;
+            border-radius: 28px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+            margin-left: 22vw;
+        }
+        
+        .butn:hover {
+            background: #3cb0fd;
+            background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+            background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+            text-decoration: none;
         }
         
         #tl {
@@ -304,6 +443,9 @@
             <div id="bl" class="col-4 board"></div>
             <div id="bc" class="col-4 board"></div>
             <div id="br" class="col-4 board"></div>
+        </div>
+        <div class="col-12">
+            <button class="butn col-lg-3 offset-2" id="reset"> RESET</button>
         </div>
         <div class="col-12" id="footer">
             <h5><a href="https://Kratso.github.io" target="_blank">Some of my other projects....</a></h5>
