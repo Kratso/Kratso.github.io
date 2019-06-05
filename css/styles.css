@@ -1,0 +1,131 @@
+:root {
+    --main-color: hsl(195, 40%, 40%);
+    --secondary-color: hsl(201, 21%, 20%);
+    --main-background: hsl(180, 55%, 90%);
+    --main-contrast: hsl(15, 40%, 67%);
+    --secondary-contrast: hsl(21, 79%, 80%);
+    --background-contrast: hsl(0, 55%, 40%);
+}
+
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+
+/*
+	HEADER
+*/
+
+.header {
+    width: 100%;
+    background-color: var(--main-color);
+    color: var(--main-contrast);
+    height: 15vh;
+    min-height: 300px;
+    overflow-x: hidden;
+    z-index: 5;
+}
+
+.main-header {
+    height: 15vh;
+    min-height: 300px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.hero {
+    border-radius: 100%;
+    border: 3px solid var(--main-contrast);
+    width: 15vmin;
+    height: 15vmin;
+    min-width: 50px;
+    min-height: 50px;
+    padding: 0;
+    margin-right: 0;
+    z-index: 1;
+}
+
+
+/*
+	MAIN
+*/
+
+.main {
+    width: 100%;
+    background-color: var(--main-background);
+    color: var(--background-contrast);
+    min-height: 500vh;
+    margin-bottom: 300px;
+    padding: 0;
+}
+
+.art {
+    height: 20%;
+    border-top: 1px solid var(--background-contrast);
+}
+
+
+/*
+	NAVBAR
+*/
+
+.nav {
+    background-color: var(--secondary-color);
+    color: var(--secondary-contrast);
+    height: 40vh;
+    min-height: 50px;
+    max-height: 500px;
+    width: 5vw;
+    min-width: 20px;
+    max-width: 100px;
+    position: sticky;
+    top: 40%;
+    left: 5%;
+    z-index: 30;
+    border: 2px solid var(--secondary-contrast);
+}
+
+.nav div {
+    padding: 3px;
+    margin: 0px;
+    width: 100%;
+    height: 20%;
+}
+
+.nav div div {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.thumbtack {
+    background-image: url("../files/push-pin-pointing-down.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*
+	FOOTER
+*/
+
+.footer {
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: var(--secondary-contrast);
+    height: 300px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.info {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
