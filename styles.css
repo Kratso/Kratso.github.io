@@ -8,6 +8,74 @@
 }
 
 
+/* sheet */
+
+.sheet {
+    display: grid;
+    grid-template: ".			title			title			title			." 100px ".			portrait	basic		holding		." 310px ".			.			.			.			." 15px ".			logo		fis			fis			." 310px ".			.			fis			fis			." minmax(0px, 100%) ".			.			psi			psi			." minmax(310px, 1fr) ".			.			record		record		." minmax(310px, 1fr) ".			.			.			.			." 20px /20px 310px 1fr 1fr 330px;
+}
+
+.sheet div {
+    background-color: black;
+    opacity: 0.5;
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: -2px 5px var(--second-color);
+    margin: 15px;
+}
+
+.sheet .title {
+    grid-area: title;
+    box-shadow: 0px 0px var(--main-color);
+    border: 0px;
+    color: var(--danger);
+    text-align: center;
+}
+
+.portrait {
+    grid-area: portrait;
+    position: static;
+    opacity: 1;
+    box-shadow: 0px 0px var(--main-color);
+    border: 0px;
+}
+
+.sheet .logo {
+    border: 0px;
+    box-shadow: 0px 0px var(--main-color);
+    grid-area: logo;
+    position: static;
+    background-color: var(--main-color);
+    opacity: 1;
+}
+
+.basic-info {
+    grid-area: basic;
+}
+
+.basic-info span,
+.holding-info span {
+    font-weight: bold;
+    white-space: pre;
+}
+
+.holding-info {
+    grid-area: holding;
+}
+
+.fis-description {
+    grid-area: fis;
+}
+
+.psi-description {
+    grid-area: psi;
+}
+
+.record {
+    grid-area: record;
+}
+
+
 /* credentials */
 
 .credentials {
@@ -19,6 +87,7 @@
 .credentials .login {
     border: 1px solid white;
     border-radius: 25px;
+    box-shadow: -2px 5px var(--second-color);
 }
 
 .credentials .logo {
@@ -26,16 +95,18 @@
 }
 
 .credentials .warning {
-    background-color: var(--fifth-color);
+    background-color: black;
     opacity: .5;
     grid-area: warning;
     color: var(--danger);
     text-align: center;
     margin-bottom: 20px;
+    padding: 15px;
 }
 
 .credentials .warning p {
     font-size: 200%;
+    text-align: justify;
 }
 
 .credentials .login {
