@@ -1,71 +1,47 @@
-<!DOCTYPE HTML>
-<html>
-<meta charset="UTF-8">
-<meta name="description" content="test spa" />
-<meta name="keywords" content="" />
-<meta name="author" content="" />
+<!DOCTYPE html>
 
-<title>TEST</title>
-
-<base target="_blank" />
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="css/styles.css" />
-
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CONFIDENCIAL</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </head>
 
 <body>
-    <header class="header row">
-        <div class="col-12 row main-header">
-            <div class=offset-2 ">
-                <img src="files/placeholder.jpeg " alt=" " class="hero " />
-            </div>
-            <div class="title-header col-6 offset-1 ">
-                <h1>TITLE</h1>
-                <h2>SUB TITLE</h2>
-            </div>
+    <div class="loading">
+        <div style="margin-left: -40px;">
+            <h1>Loading <span id="dots">...</span></h1>
         </div>
-    </header>
-
-    <main class="main row ">
-        <div class="nav ">
-            <div ><div class="thumbtack "></div></div>
-            <div ><div class="thumbtack "></div></div>
-            <div ><div class="thumbtack "></div></div>
-            <div ><div class="thumbtack "></div></div>
-            <div ><div class="thumbtack "></div></div>
+        <div class="loader">
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__ball"></div>
         </div>
-        <article id="div1 " class="col-12 art ">
-
-        </article>
-        <article id="div1 " class="col-12 art ">
-
-        </article>
-        <article id="div1 " class="col-12 art ">
-
-        </article>
-        <article id="div1 " class="col-12 art ">
-
-        </article>
-        <article id="div1 " class="col-12 art ">
-
-        </article>
-    </main>
-
-    <footer class="footer row ">
-        <div class="col-5 offset-1 ">
-
+    </div>
+    <div class="credentials">
+        <div class="logo">
+            <img src="logo.svg" height="250px" width="250px" />
         </div>
-        <div class="col-3 offset-2 ">
+        <div class="warning">
+            <h1>ATENCIÓN - MATERIAL ALTAMENTE CLASIFICADO</h1>
+            <p>El material al que esta intentando acceder es material altamente clasificado, requierendo de un nivel de acceso A o superior. Recuerde cumplir con los protocolos de seguridad al acceder a este documento. Incumplir el protocolo es una infracción
+                de tipo K nivel 3, cuyas consecuencias, incluyendo captura y ejecución, puede consultar en el Anexo 3.A del Reglamento Interno de Conducta en el Manejo de Material Clasificado, disponible en cualquier área de espera.</p>
+        </div>
+        <div class="login">
+            <div class="user"><input type="text" name="login" id="login" class="username" value="sgt-monokuma" disabled/></div>
+            <div class="password"><input type="password" name="pass" id="pass" class="pass" disabled/></div>
+        </div>
+    </div>
+    <div class="sheet">
 
-        </div>
-        <div class="col-4 info ">
-            <p>Contact info:</p>
-            <p><i class="fas fa-envelope "></i> <a href="mailto:test@test.com ">test@test.com</a></p>
-            <p><i class="fab fa-github "></i> <a href="github.com/Test ">@Test</a></p>
-            <p><i class="fab fa-twitter "> </i> <a href="https://twitter.com/test ">@Test</a></p>
-        </div>
-    </footer>
+    </div>
 </body>
+
 </html>
