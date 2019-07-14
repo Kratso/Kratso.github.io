@@ -12,7 +12,7 @@
 
 .sheet {
     display: grid;
-    grid-template: ".			title			title			title			." 100px ".			portrait	basic		holding		." 310px ".			.			.			.			." 15px ".			logo		fis			fis			." 310px ".			.			fis			fis			." minmax(0px, 100%) ".			.			psi			psi			." minmax(310px, 1fr) ".			.			record		record		." minmax(310px, 1fr) ".			.			.			.			." 20px /20px 310px 1fr 1fr 330px;
+    grid-template: ".			title			title			title			." 100px ".			portrait	basic		holding		." 330px ".			.			.			.			." 15px ".			logo		fis			fis			." 310px ".			.			fis			fis			." minmax(0px, 100%) ".			.			psi			psi			." minmax(310px, 1fr) ".			.			record		record		." minmax(310px, 3fr) ".			.			.			.			." 20px /20px 310px 1fr 1fr 330px;
 }
 
 .sheet div {
@@ -22,6 +22,7 @@
     border-radius: 15px;
     box-shadow: -2px 5px var(--second-color);
     margin: 15px;
+    padding: 10px;
 }
 
 .sheet .title {
@@ -34,13 +35,15 @@
 
 .portrait {
     grid-area: portrait;
-    position: static;
-    opacity: 1;
-    box-shadow: 0px 0px var(--main-color);
-    border: 0px;
+    position: static!important;
+    opacity: 1!important;
+    box-shadow: 0px 0px var(--main-color)!important;
+    border: 0px!important;
+    padding: 0!important;
 }
 
 .sheet .logo {
+    padding: 0;
     border: 0px;
     box-shadow: 0px 0px var(--main-color);
     grid-area: logo;

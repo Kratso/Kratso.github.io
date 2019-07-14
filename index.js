@@ -4,7 +4,7 @@ var sheet = false
 
 var loadCount = 0
 
-$(document).ready(() => {
+jQuery(document).ready(() => {
     setTimeout(() => {
         loading = false
         credentials = true
@@ -16,7 +16,7 @@ $(document).ready(() => {
             let dots = ""
             for (let i = 0; i < loadCount % 3 + 1; i++)
                 dots += "."
-            $('#dots').html(dots)
+            jQuery('#dots').html(dots)
             loadCount++
         }
 
@@ -25,8 +25,8 @@ $(document).ready(() => {
 
 function hideLoad() {
 
-    $('.loading').css("display", "none")
-    $('.credentials').css("display", "grid")
+    jQuery('.loading').css("display", "none")
+    jQuery('.credentials').css("display", "grid")
 
     setTimeout(() => {
         credentials = false
@@ -36,8 +36,8 @@ function hideLoad() {
 
     setInterval(() => {
         if (credentials)
-            $('.pass').val($('.pass').val() + 'a')
-        if ($('.pass').val().length == 25)
+            jQuery('.pass').val(jQuery('.pass').val() + 'a')
+        if (jQuery('.pass').val().length == 25)
             credentials = false
     }, 100)
 
@@ -45,8 +45,8 @@ function hideLoad() {
 
 function hideCred() {
     loading = true
-    $('.loading').css("display", "block")
-    $('.credentials').css("display", "none")
+    jQuery('.loading').css("display", "block")
+    jQuery('.credentials').css("display", "none")
     setTimeout(() => {
         loading = false
         credentials = true
@@ -58,7 +58,7 @@ function hideCred() {
             let dots = ""
             for (let i = 0; i < loadCount % 3 + 1; i++)
                 dots += "."
-            $('#dots').html(dots)
+            jQuery('#dots').html(dots)
             loadCount++
         }
 
@@ -68,7 +68,7 @@ function hideCred() {
 
 function hideLoad2() {
 
-    $('.loading').css("display", "none")
-    $('.sheet').css("display", "grid")
+    jQuery('.loading').css("display", "none")
+    jQuery('.sheet').css("display", "grid")
 
 }
