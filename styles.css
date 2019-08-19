@@ -13,7 +13,8 @@
 .sheet {
     display: grid;
     grid-template: 	".			title			title			title			." 		100px 
-					".			portrait		basic			holding			." 		330px 
+                    ".			portrait		basic			holding			." 		330px 
+                    ".          .               stats           .               ."      340px
 					".			.				.				.				." 		15px 
 					".			logo			fis				fis				." 		1fr 
 					".			.				psi				psi				." 		minmax(310px, 1fr) 
@@ -47,6 +48,19 @@
     box-shadow: 0px 0px var(--main-color)!important;
     border: 0px!important;
     padding: 0!important;
+}
+
+.stats {
+    grid-area: stats;
+    position: static!important;
+    opacity: .5!important;
+    box-shadow: -2px 5px var(--second-color);
+    border: 0px!important;
+    padding: 0!important;
+    padding-left: 40px!important;
+}
+.stats >canvas {
+    opacity: 1;
 }
 
 .sheet .logo {

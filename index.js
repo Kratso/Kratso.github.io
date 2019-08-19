@@ -62,8 +62,35 @@ function hideCred() {
             loadCount++
         }
 
-    }, 300)
 
+        const canvas = jQuery("#stats")
+       const stats = new Chart(canvas, {
+            type: "radar",
+            data:   {
+                labels: ['Fuerza', 'Destreza', 'Aguante', 'Agilidad'],
+                datasets :[
+                    {
+                        label: "Datos del Sujeto",
+                        data: [7,5,7,5],
+                        backgroundColor: 'rgba(171, 200, 192, 0.6)',
+                        borderColor: 'rgba(158, 228, 147, 1)',
+                        lineTension: 0,
+                        borderWidth: 1,
+                    }
+                ]
+            },
+            options : {
+                scale : {
+                    ticks: {
+                        max: 10,
+                        min: 0,
+                        stepSize: 1.0,
+                        display: false
+                    },
+                },
+            }
+        })
+    }, 300)
 }
 
 function hideLoad2() {
@@ -72,3 +99,4 @@ function hideLoad2() {
     jQuery('.sheet').css("display", "grid")
 
 }
+
