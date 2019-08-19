@@ -12,7 +12,7 @@
 
 .sheet {
     display: grid;
-    grid-template: ".			title			title			title			." 100px ".			portrait	basic		holding		." 330px ".			.			.			.			." 15px ".			logo		fis			fis			." 310px ".			.			fis			fis			." minmax(0px, 100%) ".			.			psi			psi			." minmax(310px, 1fr) ".			.			record		record		." minmax(310px, 3fr) ".			.			.			.			." 20px /20px 310px 1fr 1fr 330px;
+    grid-template: ".			title			title			title			." 100px ".			portrait	basic		holding		." 330px ".			.			.			.			." 15px ".			logo		fis			fis			." 310px ".			.			fis			fis			." minmax(0px, 100%) ".			.			psi			psi			." minmax(310px, 1fr) ".			.			record		record		." minmax(310px, 100%) ".			.			.			.			." 20px /20px 310px 1fr 1fr 330px;
 }
 
 .sheet div {
